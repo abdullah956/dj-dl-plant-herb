@@ -172,3 +172,18 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+PlantDoc-Dataset
+Chinese-Herbs-Dataset
+data
+processed_data
+media
+60 something herb
+60 something plant
+60 something plant
+70 something plant
+80 something plant
+90 something plant
+
+herb.h5
+plant.h5

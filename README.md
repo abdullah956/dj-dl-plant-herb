@@ -1,1 +1,1 @@
-# dj-dl-plant-herb
+# dj-dl-plant
