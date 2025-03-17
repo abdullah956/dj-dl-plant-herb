@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Herb Prediction</title>
+  </head>
+  <body>
+    <h2>Upload an Image for Prediction</h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="image" required />
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if predicted_class %}
+      <h2>Predicted Herb: {{ predicted_class }}</h2>
+
+      {% if medical_info.medical_uses %}
+        <h3>Medical Uses:</h3>
+        <ul>
+          {% for use in medical_info.medical_uses %}
+            <li>
+              <strong>{{ use.use }}:</strong> {{ use.description }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No medical information available.</p>
+      {% endif %}
+    {% endif %}
+  </body>
+</html>
