@@ -1,21 +1,256 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Prediction</title>
-</head>
-<body>
-    <h2>Upload an Image for Prediction</h2>
-    <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="image" required>
-    <button type="submit">Predict</button>
-</form>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Predict Leaf</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
 
-{% if predicted_class %}
-    <h3>Predicted Class: {{ predicted_class }}</h3>
-{% endif %}
+    <!-- Favicons -->
 
-</body>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Marcellus:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}"
+      rel="stylesheet"
+    />
+    <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet" />
+    <link
+      href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}"
+      rel="stylesheet"
+    />
+
+    <!-- Main CSS File -->
+    <link href="{% static 'assets/css/main.css' %}" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- =======================================================
+  * Template Name: AgriCulture
+  * Template URL: https://bootstrapmade.com/agriculture-bootstrap-website-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  </head>
+
+  <body class="index-page">
+    <header
+      id="header"
+      class="header d-flex align-items-center position-relative"
+    >
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
+      >
+        <a href="index.html" class="logo d-flex align-items-center">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.png" alt="AgriCulture" /> -->
+          <h2>VerdiScan</h2>
+          <!-- <h1 class="sitename">AgriCulture</h1>  -->
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="{% url 'home' %}" class="active">Home</a></li>
+            <li><a href="{% url 'predict' %}">Predict Leaf</a></li>
+            <li><a href="{% url 'herb_predict' %}">Predict Herb</a></li>
+
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Hero Section -->
+      <section id="hero" class="hero section dark-background">
+        <div
+          id="hero-carousel"
+          class="carousel slide carousel-fade"
+          data-bs-ride="carousel"
+          data-bs-interval="5000"
+        >
+          <div class="carousel-item active">
+            <img src="{% static 'assets/img/hero_1.jpg' %}" alt="" />
+            <div class="carousel-container">
+              <h2>Predict Leaf & Gain Insights</h2>
+            </div>
+          </div>
+
+          <!-- End Carousel Item -->
+        </div>
+      </section>
+      <!-- /Hero Section -->
+
+      <div
+        class="container d-flex justify-content-center align-items-center vh-100"
+      >
+        <div
+          class="card p-4 shadow-lg text-center"
+          style="max-width: 800px; width: 100%"
+        >
+          <h2 class="mb-3 text-success">🌿 Upload an Image for Prediction</h2>
+          <form method="POST" enctype="multipart/form-data" class="mt-4">
+            {% csrf_token %}
+            <div class="mb-3">
+              <input type="file" class="form-control" name="image" required />
+            </div>
+            <button type="submit" class="btn btn-success w-100">
+              🔍 Predict
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {% if predicted_class %}
+      <!-- Bootstrap Toast -->
+      <div
+        id="predictionToast"
+        class="toast position-fixed top-50 start-50 translate-middle bg-dark text-white show"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        data-bs-autohide="false"
+        style="z-index: 1050;"
+      >
+        <div class="toast-header bg-success text-white">
+          <strong class="me-auto">✅ Prediction</strong>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="toast"
+          ></button>
+        </div>
+        <div class="toast-body bg-white text-dark fw-bold">
+            Predicted Class: {{ predicted_class }}
+        </div>
+        
+      </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          var toastElement = document.getElementById("predictionToast");
+          var toast = new bootstrap.Toast(toastElement);
+          toast.show();
+        });
+      </script>
+      {% endif %}
+
+      <!-- Call To Action Section -->
+      <section
+        id="call-to-action"
+        class="call-to-action section light-background"
+      >
+        <div class="content">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-6">
+                <h3>Subscribe To Our Newsletter</h3>
+              </div>
+              <div class="col-lg-6">
+                <form
+                  action="forms/newsletter.php"
+                  class="form-subscribe php-email-form"
+                >
+                  <div class="form-group d-flex align-items-stretch">
+                    <input
+                      type="email"
+                      name="email"
+                      class="form-control h-100"
+                      placeholder="Enter your e-mail"
+                    />
+                    <input
+                      type="submit"
+                      class="btn btn-secondary px-4"
+                      value="Subcribe"
+                    />
+                  </div>
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">
+                    Your subscription request has been sent. Thank you!
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /Call To Action Section -->
+    </main>
+
+    <footer id="footer" class="footer dark-background">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row gy-4">
+            <div class="col-lg-7 col-md-6 footer-about">
+              <a href="index.html" class="logo d-flex align-items-center">
+                <span class="sitename">VerdiScan</span>
+              </a>
+              <div class="footer-contact pt-3">
+                <p>
+                  The project leverages machine learning to accurately identify
+                  and classify medicinal plants, eliminating errors and risks of
+                  manual identification.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-lg-5 col-md-3 footer-links">
+              <h4>Useful Links</h4>
+              <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'predict' %}">Predict Leaf</a></li>
+                <li><a href="{% url 'herb_predict' %}">Predict Herb</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+    <!-- Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  </body>
 </html>

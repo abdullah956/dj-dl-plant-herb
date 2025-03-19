@@ -46,3 +46,11 @@ def predict_view(request):
         return render(request, "plant/predict.html", {"predicted_class": predicted_class})
 
     return render(request, "plant/predict.html")
+
+
+
+def home_view(request):
+    return render(request, "home.html")
+
+def contact_view(request):
+    return render(request, 'contact.html')
