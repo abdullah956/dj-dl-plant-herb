@@ -1,0 +1,53 @@
+{
+  "Apple Scab Leaf": {
+    "Cause": "Fungal infection caused by Venturia inaequalis."
+  },
+  "Apple rust leaf": {
+    "Cause": "Caused by Gymnosporangium juniperi-virginianae, spreads from junipers."
+  },
+  "Bell pepper leaf spot": {
+    "Cause": "Caused by Xanthomonas campestris bacteria, leading to dark lesions."
+  },
+  "Corn Gray leaf spot": {
+    "Cause": "Caused by Cercospora zeae-maydis, thrives in humid conditions."
+  },
+  "Corn leaf blight": {
+    "Cause": "Caused by Bipolaris maydis or Exserohilum turcicum fungi, affecting yield."
+  },
+  "Corn rust leaf": {
+    "Cause": "Caused by Puccinia sorghi, spreads through wind-borne spores."
+  },
+  "Potato leaf early blight": {
+    "Cause": "Caused by Alternaria solani, worsened by wet conditions."
+  },
+  "Potato leaf late blight": {
+    "Cause": "Caused by Phytophthora infestans, spreads rapidly in humid weather."
+  },
+  "Squash Powdery mildew leaf": {
+    "Cause": "Caused by Podosphaera xanthii, forms white powdery spots."
+  },
+  "Tomato Early blight leaf": {
+    "Cause": "Caused by Alternaria solani, leads to leaf necrosis."
+  },
+  "Tomato Septoria leaf spot": {
+    "Cause": "Caused by Septoria lycopersici, spreads through water droplets."
+  },
+  "Tomato leaf bacterial spot": {
+    "Cause": "Caused by Xanthomonas spp., leads to black lesions on leaves."
+  },
+  "Tomato leaf late blight": {
+    "Cause": "Caused by Phytophthora infestans, spreads rapidly in moist conditions."
+  },
+  "Tomato leaf mosaic virus": {
+    "Cause": "Caused by Tobacco mosaic virus (TMV), leads to mottled leaves."
+  },
+  "Tomato leaf yellow virus": {
+    "Cause": "Caused by Tomato yellow leaf curl virus (TYLCV), transmitted by whiteflies."
+  },
+  "Tomato mold leaf": {
+    "Cause": "Caused by Cladosporium fulvum, thrives in high humidity."
+  },
+  "grape leaf black rot": {
+    "Cause": "Caused by Guignardia bidwellii, affects grapevine yield."
+  }
+}
