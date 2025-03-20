@@ -43,3 +43,23 @@ def home_view(request):
 
 def contact_view(request):
     return render(request, "contact.html")
+
+def predict_by_model_view(request):
+    if request.method == "POST" and request.FILES.get("image"):
+        uploaded_file = request.FILES["image"]
+        file_path = default_storage.save(uploaded_file.name, uploaded_file)
+        full_path = default_storage.path(file_path)
+
+        img = cv2.imread(full_path)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img = cv2.resize(img, (224, 224))
+        img = img / 255.0
+        img = np.expand_dims(img, axis=0)
+
+        prediction = model.predict(img)
+        class_idx = np.argmax(prediction)
+        predicted_class = CLASS_NAMES[class_idx]
+
+        return render(request, "plant/predict.html", {"predicted_class": predicted_class})
+
+    return render(request, "plant/predict.html")

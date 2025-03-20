@@ -58,3 +58,16 @@ def predict_view(request):
         return render(request, "herb/predict.html", {"predicted_class": predicted_class, "medical_info": medical_info})
 
     return render(request, "herb/predict.html")
+
+def predict_from_model_view(request):
+    if request.method == "POST" and request.FILES.get("image"):
+        uploaded_file = request.FILES["image"]
+        file_path = default_storage.save(uploaded_file.name, uploaded_file)
+        full_path = default_storage.path(file_path)
+
+        predicted_class = predict_image(full_path)
+        medical_info = get_medical_uses(predicted_class)
+
+        return render(request, "herb/predict.html", {"predicted_class": predicted_class, "medical_info": medical_info})
+
+    return render(request, "herb/predict.html")
