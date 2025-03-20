@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.core.files.storage import default_storage
 from django.conf import settings
 from django.contrib import messages
-from .models import ContactMessage
+from .models import ContactMessage, NewsletterSubscriber
 
 model = tf.keras.models.load_model(os.path.join(settings.BASE_DIR, "plant.h5"))
 
@@ -78,3 +78,16 @@ def predict_by_model_view(request):
         return render(request, "plant/predict.html", {"predicted_class": predicted_class})
 
     return render(request, "plant/predict.html")
+
+
+def subscribe_newsletter(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+
+        if not NewsletterSubscriber.objects.filter(email=email).exists():
+            NewsletterSubscriber.objects.create(email=email)
+            messages.success(request, "Your subscription request has been sent. Thank you!")
+        else:
+            messages.warning(request, "You are already subscribed.")
+
+        return redirect("home")
