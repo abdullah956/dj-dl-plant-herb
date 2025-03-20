@@ -3,9 +3,12 @@ import json
 import numpy as np
 import cv2
 import tensorflow as tf
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.files.storage import default_storage
 from django.conf import settings
+from django.contrib import messages
+from .models import ContactMessage
+
 model = tf.keras.models.load_model(os.path.join(settings.BASE_DIR, "plant.h5"))
 
 with open(os.path.join(settings.BASE_DIR, "class_names.json"), "r") as file:
@@ -42,7 +45,19 @@ def home_view(request):
     return render(request, "home.html")
 
 def contact_view(request):
-    return render(request, "contact.html")
+    sent = False
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        subject = request.POST.get("subject")
+        message = request.POST.get("message")
+
+        ContactMessage.objects.create(name=name, email=email, subject=subject, message=message)
+        sent = True
+        messages.success(request, "Your message has been sent. Thank you!")
+        return redirect("contact")
+
+    return render(request, "contact.html", {"sent": sent})
 
 def predict_by_model_view(request):
     if request.method == "POST" and request.FILES.get("image"):

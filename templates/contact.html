@@ -13,86 +13,70 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Marcellus:wght@400&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Marcellus:wght@400&display=swap" rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
-    <link
-      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
-      rel="stylesheet"
-    />
-    <link
-      href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}"
-      rel="stylesheet"
-    />
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet" />
     <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet" />
-    <link
-      href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}"
-      rel="stylesheet"
-    />
-    <link
-      href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}"
-      rel="stylesheet"
-    />
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet" />
 
     <!-- Main CSS File -->
     <link href="{% static 'assets/css/main.css' %}" rel="stylesheet" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <!-- =======================================================
+    <!--  =======================================================
   * Template Name: AgriCulture
   * Template URL: https://bootstrapmade.com/agriculture-bootstrap-website-template/
   * Updated: Aug 07 2024 with Bootstrap v5.3.3
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  ========================================================  -->
   </head>
 
   <body class="index-page">
     <main>
-      <header
-        id="header"
-        class="header d-flex align-items-center position-relative"
-      >
-        <div
-          class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
-        >
+      <header id="header" class="header d-flex align-items-center position-relative">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
           <a href="index.html" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.png" alt="AgriCulture" /> -->
             <h2>VerdiScan</h2>
-            <!-- <h1 class="sitename">AgriCulture</h1>  -->
+            <!-- <h1 class="sitename">AgriCulture</h1> -->
           </a>
 
           <nav id="navmenu" class="navmenu">
             <ul>
-              <li><a href="{% url 'home' %}" class="active">Home</a></li>
-              <li><a href="{% url 'predict' %}">Predict Leaf</a></li>
-              <li><a href="{% url 'herb_predict' %}">Predict Herb</a></li>
+              <li>
+                <a href="{% url 'home' %}" class="active">Home</a>
+              </li>
+              <li>
+                <a href="{% url 'predict' %}">Predict Leaf</a>
+              </li>
+              <li>
+                <a href="{% url 'herb_predict' %}">Predict Herb</a>
+              </li>
 
-              <li><a href="{% url 'contact' %}">Contact</a></li>
+              <li>
+                <a href="{% url 'contact' %}">Contact</a>
+              </li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
           </nav>
         </div>
       </header>
 
-      <div
-        class="page-title dark-background"
-        data-aos="fade"
-        style="background-image: url('{% static "assets/img/page-title-bg.webp" %}');"      >
+      <div class="page-title dark-background" data-aos="fade" style="background-image: url('{% static 'assets/img/page-title-bg.webp' %}');">
         <div class="container position-relative">
           <h1>Contact</h1>
           <p>Home / Contact</p>
           <nav class="breadcrumbs">
             <ol>
-              <li><a href="{% url 'home' %}">Home</a></li>
+              <li>
+                <a href="{% url 'home' %}">Home</a>
+              </li>
               <li class="current">Contact</li>
             </ol>
           </nav>
@@ -100,76 +84,58 @@
       </div>
       <!-- End Page Title -->
 
-
       <!-- Contact Section -->
-    <section id="contact" class="contact section mt-5">
-
-        
-  
+      <section id="contact" class="contact section mt-5">
         <div class="container" data-aos="fade">
-  
           <div class="row gy-5 gx-lg-5">
-  
             <div class="col-lg-4">
-  
-                <div class="info">
-                    <h3>Get in Touch</h3>
-                    <p>Have questions about our AI-powered medicinal plant identification system? Reach out to us for support, collaborations, or inquiries.</p>
-                
-                    
-                
-                 
-                
-                    
-                
-                    <div class="info-item d-flex">
-                        <i class="bi bi-flower1 flex-shrink-0"></i>
-                        <div>
-                            <h4>Our Mission:</h4>
-                            <p>Revolutionizing herbal medicine by leveraging AI to accurately identify and classify medicinal plants for healthcare and research.</p>
-                        </div>
-                    </div><!-- End Info Item -->
+              <div class="info">
+                <h3>Get in Touch</h3>
+                <p>Have questions about our AI-powered medicinal plant identification system? Reach out to us for support, collaborations, or inquiries.</p>
+
+                <div class="info-item d-flex">
+                  <i class="bi bi-flower1 flex-shrink-0"></i>
+                  <div>
+                    <h4>Our Mission:</h4>
+                    <p>Revolutionizing herbal medicine by leveraging AI to accurately identify and classify medicinal plants for healthcare and research.</p>
+                  </div>
                 </div>
-                
-  
+                <!-- End Info Item -->
+              </div>
             </div>
-  
+            {% if sent %}
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                {% endif %}
             <div class="col-lg-8">
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <form action="{% url 'contact' %}" method="post" role="form">
+                {% csrf_token %}
                 <div class="row">
                   <div class="col-md-6 form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required />
                   </div>
                   <div class="col-md-6 form-group mt-3 mt-md-0">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required />
                   </div>
                 </div>
                 <div class="form-group mt-3">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required />
                 </div>
                 <div class="form-group mt-3">
-                  <textarea class="form-control" name="message" placeholder="Message" required=""></textarea>
+                  <textarea class="form-control" name="message" placeholder="Message" required></textarea>
                 </div>
-                <div class="my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                <div class="text-center">
+                  <button type="submit">Send Message</button>
                 </div>
-                <div class="text-center"><button type="submit">Send Message</button></div>
               </form>
-            </div><!-- End Contact Form -->
-  
+            </div>
+            <!-- End Contact Form -->
           </div>
-  
         </div>
-  
-      </section><!-- /Contact Section -->
+      </section>
+      <!-- /Contact Section -->
 
       <!-- Call To Action Section -->
-      <section
-        id="call-to-action"
-        class="call-to-action section light-background"
-      >
+      <section id="call-to-action" class="call-to-action section light-background">
         <div class="content">
           <div class="container">
             <div class="row align-items-center">
@@ -177,28 +143,14 @@
                 <h3>Subscribe To Our Newsletter</h3>
               </div>
               <div class="col-lg-6">
-                <form
-                  action="forms/newsletter.php"
-                  class="form-subscribe php-email-form"
-                >
+                <form action="forms/newsletter.php" class="form-subscribe php-email-form">
                   <div class="form-group d-flex align-items-stretch">
-                    <input
-                      type="email"
-                      name="email"
-                      class="form-control h-100"
-                      placeholder="Enter your e-mail"
-                    />
-                    <input
-                      type="submit"
-                      class="btn btn-secondary px-4"
-                      value="Subcribe"
-                    />
+                    <input type="email" name="email" class="form-control h-100" placeholder="Enter your e-mail" />
+                    <input type="submit" class="btn btn-secondary px-4" value="Subcribe" />
                   </div>
                   <div class="loading">Loading</div>
                   <div class="error-message"></div>
-                  <div class="sent-message">
-                    Your subscription request has been sent. Thank you!
-                  </div>
+                  <div class="sent-message">Your subscription request has been sent. Thank you!</div>
                 </form>
               </div>
             </div>
@@ -213,25 +165,27 @@
         <div class="container">
           <div class="row gy-4">
             <div class="col-lg-7 col-md-6 footer-about">
-              <a href="index.html" class="logo d-flex align-items-center">
-                <span class="sitename">VerdiScan</span>
-              </a>
+              <a href="index.html" class="logo d-flex align-items-center"><span class="sitename">VerdiScan</span></a>
               <div class="footer-contact pt-3">
-                <p>
-                  The project leverages machine learning to accurately identify
-                  and classify medicinal plants, eliminating errors and risks of
-                  manual identification.
-                </p>
+                <p>The project leverages machine learning to accurately identify and classify medicinal plants, eliminating errors and risks of manual identification.</p>
               </div>
             </div>
 
             <div class="col-lg-5 col-md-3 footer-links">
               <h4>Useful Links</h4>
               <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'predict' %}">Predict Leaf</a></li>
-                <li><a href="{% url 'herb_predict' %}">Predict Herb</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li>
+                  <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li>
+                  <a href="{% url 'predict' %}">Predict Leaf</a>
+                </li>
+                <li>
+                  <a href="{% url 'herb_predict' %}">Predict Herb</a>
+                </li>
+                <li>
+                  <a href="{% url 'contact' %}">Contact</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -240,12 +194,7 @@
     </footer>
 
     <!-- Scroll Top -->
-    <a
-      href="#"
-      id="scroll-top"
-      class="scroll-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Preloader -->
     <div id="preloader"></div>
