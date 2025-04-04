@@ -2,21 +2,20 @@ import os
 import json
 import numpy as np
 import cv2
+from django.conf import settings
 from django.shortcuts import render
 from django.core.files.storage import default_storage
 from tensorflow.keras.models import load_model
 
-# Load class names from JSON
-with open("herb_classes.json", "r") as file:
+model = load_model(os.path.join(settings.BASE_DIR, 'work', 'herb_work', 'herb.h5'))
+
+class_names_file_path = os.path.join(settings.BASE_DIR, 'work', 'herb_work', 'herb_class.json')
+with open(class_names_file_path, 'r') as file:
     CLASS_NAMES = json.load(file)
 
-# Load medical uses data
-with open("medic_herb.json", "r") as file:
+medic_file_path = os.path.join(settings.BASE_DIR, 'work', 'herb_work', 'herb_medic.json')
+with open(medic_file_path, 'r') as file:
     MEDIC_HERBS = json.load(file)
-
-# Load the trained model
-MODEL_PATH = "herb.h5"
-model = load_model(MODEL_PATH)
 
 def predict_image(image_path):
     img = cv2.imread(image_path)

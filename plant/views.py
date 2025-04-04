@@ -7,19 +7,25 @@ from django.shortcuts import render, redirect
 from django.core.files.storage import default_storage
 from django.conf import settings
 from django.contrib import messages
+from tensorflow.keras.models import load_model
 from .models import ContactMessage, NewsletterSubscriber
 
-model = tf.keras.models.load_model(os.path.join(settings.BASE_DIR, "plant.h5"))
+model = load_model(os.path.join(settings.BASE_DIR, 'work', 'plant_work', 'plant.h5'))
 
-with open(os.path.join(settings.BASE_DIR, "class_names.json"), "r") as file:
+class_names_file_path = os.path.join(settings.BASE_DIR, 'work', 'plant_work', 'plant_class.json')
+with open(class_names_file_path, 'r') as file:
     CLASS_NAMES = json.load(file)
+
+cause_file_path = os.path.join(settings.BASE_DIR, 'work', 'plant_work', 'plant_cause.json')
+with open(cause_file_path, 'r') as file:
+    CAUSE_NAMES = json.load(file)
+
+qualities_file_path = os.path.join(settings.BASE_DIR, 'work', 'plant_work', 'plant_qualities.json')
+with open(qualities_file_path, 'r') as file:
+    QUALITY_NAMES = json.load(file)
 
 def extract_name(image_name):
     return " ".join(image_name.split()[:-1])
-
-def load_json(file_path):
-    with open(file_path, "r") as file:
-        return json.load(file)
 
 def predict_view(request):
     if request.method == "POST" and request.FILES.get("image"):
@@ -27,8 +33,8 @@ def predict_view(request):
         image_name = os.path.splitext(image.name)[0]
         extracted_name = extract_name(image_name)
 
-        plant_data = load_json("plant.json")
-        qualities_data = load_json("qualities.json")
+        plant_data = CAUSE_NAMES
+        qualities_data = QUALITY_NAMES
 
         if extracted_name in plant_data:
             result = plant_data[extracted_name]
