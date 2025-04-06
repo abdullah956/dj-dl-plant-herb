@@ -13,19 +13,37 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Marcellus:wght@400&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Marcellus:wght@400&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Vendor CSS Files -->
-    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet" />
+    <link
+      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}"
+      rel="stylesheet"
+    />
     <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet" />
+    <link
+      href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}"
+      rel="stylesheet"
+    />
 
     <!-- Main CSS File -->
     <link href="{% static 'assets/css/main.css' %}" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
     <!--  =======================================================
   * Template Name: AgriCulture
@@ -37,8 +55,13 @@
   </head>
 
   <body class="index-page">
-    <header id="header" class="header d-flex align-items-center position-relative">
-      <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <header
+      id="header"
+      class="header d-flex align-items-center position-relative"
+    >
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
+      >
         <a href="index.html" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt="AgriCulture" /> -->
@@ -70,7 +93,12 @@
     <main class="main">
       <!-- Hero Section -->
       <section id="hero" class="hero section dark-background">
-        <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+        <div
+          id="hero-carousel"
+          class="carousel slide carousel-fade"
+          data-bs-ride="carousel"
+          data-bs-interval="5000"
+        >
           <div class="carousel-item active">
             <img src="{% static 'assets/img/hero_1.jpg' %}" alt="" />
             <div class="carousel-container">
@@ -83,20 +111,27 @@
       </section>
       <!-- /Hero Section -->
 
-      <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="card p-4 shadow-lg text-center" style="max-width: 800px; width: 100%">
+      <div
+        class="container d-flex justify-content-center align-items-center vh-100"
+      >
+        <div
+          class="card p-4 shadow-lg text-center"
+          style="max-width: 800px; width: 100%"
+        >
           <h2 class="mb-3 text-success">🌿 Upload an Image for Prediction</h2>
           <form method="POST" enctype="multipart/form-data" class="mt-4">
             {% csrf_token %}
             <div class="mb-3">
               <input type="file" class="form-control" name="image" required />
             </div>
-            <button type="submit" class="btn btn-success w-100">🔍 Predict</button>
+            <button type="submit" class="btn btn-success w-100">
+              🔍 Predict
+            </button>
           </form>
         </div>
       </div>
 
-      {% if predicted_class %}
+      <!-- {% if predicted_class %}
         <div id="predictionToast" class="toast position-fixed top-50 start-50 translate-middle bg-dark text-white show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false" style="z-index: 1050;">
           <div class="toast-header bg-success text-white">
             <strong class="me-auto">✅ Prediction</strong>
@@ -121,10 +156,77 @@
           toast.show()
         })
       </script>
+      {% endif %} -->
+      {% if predicted_class %}
+      <div
+        id="predictionToast"
+        class="toast position-fixed top-50 start-50 translate-middle bg-dark text-white show"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        data-bs-autohide="false"
+        style="z-index: 1050;min-width: 50vw;max-width: 80vw;"
+      >
+        <div class="toast-header bg-success text-white">
+          <strong class="me-auto">✅ Prediction</strong>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="toast"
+          ></button>
+        </div>
+        <div class="toast-body bg-white text-dark fw-bold">
+          <p>
+            Predicted Class:
+            <span class="text-success">{{ predicted_class }}</span>
+          </p>
+
+          {% if result %}
+          <p>
+            📜 <strong>Historical Use:</strong>
+            {% if result.Historical_Use %} 
+             {{ result.Historical_Use }} 
+            {% else %}
+            <em>No historical use available.</em>
+            {% endif %}
+          </p>
+
+          <p>
+            ⚠️ <strong>Toxicity Level:</strong>
+            {% if result.Toxicity_Level %}
+            <span
+              class="text-{{ result.Toxicity_Level|lower|yesno:'success,warning,danger' }}"
+              >{{ result.Toxicity_Level }}</span
+            >
+            {% else %}
+            <span class="text-muted">Unknown</span>
+            {% endif %}
+          </p>
+
+          <p>
+            🌿 <strong>Qualities:</strong>
+            {% if result.Qualities %} {{ result.Qualities }} {% else %}
+            <em>No qualities data available.</em>
+            {% endif %}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          var toastElement = document.getElementById("predictionToast");
+          var toast = new bootstrap.Toast(toastElement);
+          toast.show();
+        });
+      </script>
       {% endif %}
 
       <!-- Call To Action Section -->
-      <section id="call-to-action" class="call-to-action section light-background">
+      <section
+        id="call-to-action"
+        class="call-to-action section light-background"
+      >
         <div class="content">
           <div class="container">
             <div class="row align-items-center">
@@ -132,14 +234,28 @@
                 <h3>Subscribe To Our Newsletter</h3>
               </div>
               <div class="col-lg-6">
-                <form action="forms/newsletter.php" class="form-subscribe php-email-form">
+                <form
+                  action="forms/newsletter.php"
+                  class="form-subscribe php-email-form"
+                >
                   <div class="form-group d-flex align-items-stretch">
-                    <input type="email" name="email" class="form-control h-100" placeholder="Enter your e-mail" />
-                    <input type="submit" class="btn btn-secondary px-4" value="Subcribe" />
+                    <input
+                      type="email"
+                      name="email"
+                      class="form-control h-100"
+                      placeholder="Enter your e-mail"
+                    />
+                    <input
+                      type="submit"
+                      class="btn btn-secondary px-4"
+                      value="Subcribe"
+                    />
                   </div>
                   <div class="loading">Loading</div>
                   <div class="error-message"></div>
-                  <div class="sent-message">Your subscription request has been sent. Thank you!</div>
+                  <div class="sent-message">
+                    Your subscription request has been sent. Thank you!
+                  </div>
                 </form>
               </div>
             </div>
@@ -154,9 +270,15 @@
         <div class="container">
           <div class="row gy-4">
             <div class="col-lg-7 col-md-6 footer-about">
-              <a href="index.html" class="logo d-flex align-items-center"><span class="sitename">VerdiScan</span></a>
+              <a href="index.html" class="logo d-flex align-items-center"
+                ><span class="sitename">VerdiScan</span></a
+              >
               <div class="footer-contact pt-3">
-                <p>The project leverages machine learning to accurately identify and classify medicinal plants, eliminating errors and risks of manual identification.</p>
+                <p>
+                  The project leverages machine learning to accurately identify
+                  and classify medicinal plants, eliminating errors and risks of
+                  manual identification.
+                </p>
               </div>
             </div>
 
@@ -183,7 +305,12 @@
     </footer>
 
     <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
 
     <!-- Preloader -->
     <div id="preloader"></div>

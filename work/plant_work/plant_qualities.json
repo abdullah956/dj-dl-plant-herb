@@ -1,32 +1,52 @@
 {
   "Apple leaf": {
-    "Qualities": "Rich in antioxidants and dietary fiber; supports digestion and heart health."
+    "Qualities": "Rich in antioxidants and dietary fiber; supports digestion and heart health.",
+    "Toxicity_Level": "None",
+    "Historical_Use": "Traditionally used in herbal infusions to treat fever and inflammation."
   },
   "Bell_pepper leaf": {
-    "Qualities": "Contains vitamins A, C, and E; supports immune function and skin health."
+    "Qualities": "Contains vitamins A, C, and E; supports immune function and skin health.",
+    "Toxicity_Level": "Low",
+    "Historical_Use": "Used in some traditional dishes, but may be avoided due to mild solanine content."
   },
   "Blueberry leaf": {
-    "Qualities": "Rich in polyphenols; supports blood sugar regulation and brain function."
+    "Qualities": "Rich in polyphenols; supports blood sugar regulation and brain function.",
+    "Toxicity_Level": "None",
+    "Historical_Use": "Used in traditional European herbal teas to manage diabetes."
   },
   "Cherry leaf": {
-    "Qualities": "Contains anti-inflammatory compounds; traditionally used in herbal remedies."
+    "Qualities": "Contains anti-inflammatory compounds; traditionally used in herbal remedies.",
+    "Toxicity_Level": "Medium",
+    "Historical_Use": "Used externally for treating skin irritations, but internal use is limited due to cyanogenic compounds."
   },
   "Peach leaf": {
-    "Qualities": "Used in herbal teas for digestive aid and calming effects."
+    "Qualities": "Used in herbal teas for digestive aid and calming effects.",
+    "Toxicity_Level": "Medium",
+    "Historical_Use": "Employed in traditional medicine for nausea and anxiety relief; should be used with caution due to cyanide traces."
   },
   "Raspberry leaf": {
-    "Qualities": "Rich in tannins; known for supporting reproductive health and easing menstrual discomfort."
+    "Qualities": "Rich in tannins; known for supporting reproductive health and easing menstrual discomfort.",
+    "Toxicity_Level": "None",
+    "Historical_Use": "Used for centuries by midwives to tone the uterus and ease childbirth."
   },
   "Soyabean leaf": {
-    "Qualities": "Contains isoflavones; supports hormonal balance and cardiovascular health."
+    "Qualities": "Contains isoflavones; supports hormonal balance and cardiovascular health.",
+    "Toxicity_Level": "Low",
+    "Historical_Use": "Rarely used traditionally; some folk uses include poultices for skin."
   },
   "Strawberry leaf": {
-    "Qualities": "Rich in vitamin C and antioxidants; supports skin health and immunity."
+    "Qualities": "Rich in vitamin C and antioxidants; supports skin health and immunity.",
+    "Toxicity_Level": "None",
+    "Historical_Use": "Commonly brewed in teas for digestive and diuretic benefits."
   },
   "Tomato leaf": {
-    "Qualities": "Contains alkaloids with potential medicinal properties, but not typically consumed."
+    "Qualities": "Contains alkaloids with potential medicinal properties, but not typically consumed.",
+    "Toxicity_Level": "High",
+    "Historical_Use": "Rarely used due to toxic alkaloids like tomatine; sometimes applied topically in folk remedies."
   },
   "grape leaf": {
-    "Qualities": "Rich in polyphenols; supports heart health and reduces inflammation."
+    "Qualities": "Rich in polyphenols; supports heart health and reduces inflammation.",
+    "Toxicity_Level": "None",
+    "Historical_Use": "Used in Mediterranean diets and herbal wraps; known to aid digestion."
   }
 }

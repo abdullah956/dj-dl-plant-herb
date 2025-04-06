@@ -133,7 +133,7 @@
         aria-live="assertive"
         aria-atomic="true"
         data-bs-autohide="false"
-        style="z-index: 1050;"
+        style="z-index: 1050; min-width: 60vw; max-width: 90vw;"
       >
         <div class="toast-header bg-success text-white">
           <strong class="me-auto">✅ Prediction</strong>
@@ -141,12 +141,28 @@
             type="button"
             class="btn-close btn-close-white"
             data-bs-dismiss="toast"
-            
           ></button>
         </div>
-        <div class="toast-body bg-white text-dark fw-bold">
+      
+        <!-- Scrollable Body -->
+        <div class="toast-body bg-white text-dark fw-bold overflow-auto" style="max-height: 400px;">
+      
           <h5 class="text-success">Predicted Herb: {{ predicted_class }}</h5>
-
+      
+          {% if medical_info.historical_use %}
+          <h6 class="mt-3">📜 Historical Use:</h6>
+          <p class="">{{ medical_info.historical_use }}</p>
+          {% endif %}
+      
+          {% if medical_info.toxicity_level %}
+          <h6 class="mt-3 d-flex">
+            ⚠️ Toxicity Level:
+            <p class="{% if medical_info.toxicity_level == 'High' %}text-danger{% elif medical_info.toxicity_level == 'Medium' %}text-warning{% else %}text-success{% endif %} ms-2">
+              {{ medical_info.toxicity_level }}
+            </p>
+          </h6>
+          {% endif %}
+      
           {% if medical_info.medical_uses %}
           <h6 class="mt-3">🌱 Medical Uses:</h6>
           <ul class="list-group">
@@ -159,9 +175,10 @@
           {% else %}
           <p class="mt-2 text-muted">No medical information available.</p>
           {% endif %}
+      
         </div>
       </div>
-
+      
       <script>
         document.addEventListener("DOMContentLoaded", function () {
           var toastElement = document.getElementById("predictionToast");
@@ -170,6 +187,7 @@
         });
       </script>
       {% endif %}
+      
 
       <!-- Call To Action Section -->
       <section

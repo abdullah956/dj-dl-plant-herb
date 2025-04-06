@@ -2,238 +2,148 @@
   "herbs": [
     {
       "herb": "Amomum Tsaoko",
+      "toxicity_level": "Low",
+      "historical_use": "Traditionally used in Chinese and Tibetan medicine for digestive and respiratory issues.",
       "medical_uses": [
-        {
-          "use": "Digestive Aid",
-          "description": "Helps with indigestion, bloating, and stomach discomfort."
-        },
-        {
-          "use": "Anti-inflammatory",
-          "description": "Used to reduce swelling and inflammation."
-        },
-        {
-          "use": "Respiratory Health",
-          "description": "Helps relieve cough, asthma, and phlegm buildup."
-        },
-        {
-          "use": "Antibacterial & Antifungal",
-          "description": "Used in traditional medicine to fight infections."
-        },
-        {
-          "use": "Improves Appetite",
-          "description": "Stimulates digestion and appetite."
-        },
-        {
-          "use": "Detoxification",
-          "description": "Used in formulations to remove toxins from the body."
-        }
+        { "use": "Digestive Aid", "description": "Helps with indigestion, bloating, and stomach discomfort." },
+        { "use": "Anti-inflammatory", "description": "Used to reduce swelling and inflammation." },
+        { "use": "Respiratory Health", "description": "Helps relieve cough, asthma, and phlegm buildup." },
+        { "use": "Antibacterial & Antifungal", "description": "Used in traditional medicine to fight infections." },
+        { "use": "Improves Appetite", "description": "Stimulates digestion and appetite." },
+        { "use": "Detoxification", "description": "Used in formulations to remove toxins from the body." }
       ]
     },
     {
       "herb": "Coix Seed",
+      "toxicity_level": "None",
+      "historical_use": "Used in Traditional Chinese Medicine for promoting urination and improving skin conditions.",
       "medical_uses": [
-        {
-          "use": "Digestive Health",
-          "description": "Aids digestion and helps with bloating and diarrhea."
-        },
-        {
-          "use": "Diuretic Effect",
-          "description": "Promotes urination and helps reduce water retention."
-        },
-        {
-          "use": "Anti-inflammatory",
-          "description": "Reduces inflammation and is used for joint pain relief."
-        },
-        {
-          "use": "Skin Health",
-          "description": "Used to treat skin conditions like acne and warts."
-        },
-        {
-          "use": "Immune Boosting",
-          "description": "Strengthens the immune system and improves overall health."
-        },
-        {
-          "use": "Weight Management",
-          "description": "Helps in weight loss by promoting metabolism."
-        }
+        { "use": "Digestive Health", "description": "Aids digestion and helps with bloating and diarrhea." },
+        { "use": "Diuretic Effect", "description": "Promotes urination and helps reduce water retention." },
+        { "use": "Anti-inflammatory", "description": "Reduces inflammation and is used for joint pain relief." },
+        { "use": "Skin Health", "description": "Used to treat skin conditions like acne and warts." },
+        { "use": "Immune Boosting", "description": "Strengthens the immune system and improves overall health." },
+        { "use": "Weight Management", "description": "Helps in weight loss by promoting metabolism." }
       ]
     },
     {
       "herb": "Cordyceps Sinensis",
+      "toxicity_level": "Low",
+      "historical_use": "Valued in Tibetan medicine for enhancing stamina, energy, and longevity.",
       "medical_uses": [
-        {
-          "use": "Energy Boost",
-          "description": "Improves stamina and reduces fatigue."
-        },
-        {
-          "use": "Lung Health",
-          "description": "Helps with respiratory diseases like asthma and bronchitis."
-        },
-        {
-          "use": "Immune Support",
-          "description": "Boosts immune function and overall vitality."
-        }
+        { "use": "Energy Boost", "description": "Improves stamina and reduces fatigue." },
+        { "use": "Lung Health", "description": "Helps with respiratory diseases like asthma and bronchitis." },
+        { "use": "Immune Support", "description": "Boosts immune function and overall vitality." }
       ]
     },
     {
       "herb": "Fructus Amomi",
+      "toxicity_level": "None",
+      "historical_use": "Used to treat indigestion, nausea, and morning sickness in traditional remedies.",
       "medical_uses": [
-        {
-          "use": "Digestive Health",
-          "description": "Helps with bloating and indigestion."
-        },
-        {
-          "use": "Morning Sickness Relief",
-          "description": "Used to relieve nausea during pregnancy."
-        }
+        { "use": "Digestive Health", "description": "Helps with bloating and indigestion." },
+        { "use": "Morning Sickness Relief", "description": "Used to relieve nausea during pregnancy." }
       ]
     },
     {
       "herb": "Glossy Ganoderma",
+      "toxicity_level": "Low",
+      "historical_use": "Used in Chinese medicine to boost longevity and immune function.",
       "medical_uses": [
-        {
-          "use": "Immune Boosting",
-          "description": "Enhances the immune system and fights infections."
-        },
-        {
-          "use": "Liver Protection",
-          "description": "Supports liver health and detoxification."
-        },
-        {
-          "use": "Anti-cancer Properties",
-          "description": "Contains compounds that may inhibit tumor growth."
-        }
+        { "use": "Immune Boosting", "description": "Enhances the immune system and fights infections." },
+        { "use": "Liver Protection", "description": "Supports liver health and detoxification." },
+        { "use": "Anti-cancer Properties", "description": "Contains compounds that may inhibit tumor growth." }
       ]
     },
     {
       "herb": "Lily",
+      "toxicity_level": "None",
+      "historical_use": "Traditionally used to calm the mind and nourish the lungs.",
       "medical_uses": [
-        {
-          "use": "Calming Effect",
-          "description": "Used to reduce anxiety and improve sleep."
-        },
-        {
-          "use": "Lung Health",
-          "description": "Helps with dry cough and throat irritation."
-        }
+        { "use": "Calming Effect", "description": "Used to reduce anxiety and improve sleep." },
+        { "use": "Lung Health", "description": "Helps with dry cough and throat irritation." }
       ]
     },
     {
       "herb": "Liquorice",
+      "toxicity_level": "Medium",
+      "historical_use": "Widely used in herbal medicine for throat soothing and digestive support.",
       "medical_uses": [
-        {
-          "use": "Respiratory Health",
-          "description": "Soothes sore throat and cough."
-        },
-        {
-          "use": "Digestive Aid",
-          "description": "Supports gut health and relieves acid reflux."
-        },
-        {
-          "use": "Anti-inflammatory",
-          "description": "Helps with skin conditions like eczema."
-        }
+        { "use": "Respiratory Health", "description": "Soothes sore throat and cough." },
+        { "use": "Digestive Aid", "description": "Supports gut health and relieves acid reflux." },
+        { "use": "Anti-inflammatory", "description": "Helps with skin conditions like eczema." }
       ]
     },
     {
       "herb": "Lotus Seed",
+      "toxicity_level": "None",
+      "historical_use": "Used in traditional medicine for calming the spirit and aiding digestion.",
       "medical_uses": [
-        {
-          "use": "Sleep Aid",
-          "description": "Used to treat insomnia and calm the mind."
-        },
-        {
-          "use": "Digestive Health",
-          "description": "Supports gut function and relieves diarrhea."
-        }
+        { "use": "Sleep Aid", "description": "Used to treat insomnia and calm the mind." },
+        { "use": "Digestive Health", "description": "Supports gut function and relieves diarrhea." }
       ]
     },
     {
       "herb": "Radix Angelicae Dahuricae",
+      "toxicity_level": "Low",
+      "historical_use": "Used for its pain-relieving and skin-cleansing properties.",
       "medical_uses": [
-        {
-          "use": "Pain Relief",
-          "description": "Used for headaches and muscle pain."
-        },
-        {
-          "use": "Skin Health",
-          "description": "Helps with skin infections and acne."
-        }
+        { "use": "Pain Relief", "description": "Used for headaches and muscle pain." },
+        { "use": "Skin Health", "description": "Helps with skin infections and acne." }
       ]
     },
     {
       "herb": "Red Dates",
+      "toxicity_level": "None",
+      "historical_use": "Common in Chinese medicine to nourish blood and strengthen Qi(vital life energy or life force).",
       "medical_uses": [
-        {
-          "use": "Blood Nourishment",
-          "description": "Improves circulation and helps with anemia."
-        },
-        {
-          "use": "Energy Boost",
-          "description": "Used as a natural energy enhancer."
-        }
+        { "use": "Blood Nourishment", "description": "Improves circulation and helps with anemia." },
+        { "use": "Energy Boost", "description": "Used as a natural energy enhancer." }
       ]
     },
     {
       "herb": "Rhizoma Atractylodis Macrocephalae",
+      "toxicity_level": "Low",
+      "historical_use": "A tonic herb used to strengthen the spleen and dry dampness.",
       "medical_uses": [
-        {
-          "use": "Digestive Support",
-          "description": "Aids digestion and helps with bloating."
-        },
-        {
-          "use": "Boosts Immunity",
-          "description": "Strengthens the immune system."
-        }
+        { "use": "Digestive Support", "description": "Aids digestion and helps with bloating." },
+        { "use": "Boosts Immunity", "description": "Strengthens the immune system." }
       ]
     },
     {
       "herb": "Rhubarb",
+      "toxicity_level": "Medium",
+      "historical_use": "Used for digestive complaints and liver detox in traditional therapies.",
       "medical_uses": [
         { "use": "Laxative", "description": "Used to relieve constipation." },
-        {
-          "use": "Liver Detox",
-          "description": "Supports liver function and detoxification."
-        }
+        { "use": "Liver Detox", "description": "Supports liver function and detoxification." }
       ]
     },
     {
       "herb": "Star Anise",
+      "toxicity_level": "Low",
+      "historical_use": "Known for digestive relief and antimicrobial properties in traditional remedies.",
       "medical_uses": [
-        {
-          "use": "Antiviral Properties",
-          "description": "Contains compounds used in antiviral drugs."
-        },
-        {
-          "use": "Digestive Aid",
-          "description": "Helps with bloating and nausea."
-        }
+        { "use": "Antiviral Properties", "description": "Contains compounds used in antiviral drugs." },
+        { "use": "Digestive Aid", "description": "Helps with bloating and nausea." }
       ]
     },
     {
       "herb": "Tremella",
+      "toxicity_level": "None",
+      "historical_use": "Used as a beauty tonic and immune booster in traditional Chinese medicine.",
       "medical_uses": [
-        {
-          "use": "Skin Hydration",
-          "description": "Improves skin moisture and elasticity."
-        },
-        {
-          "use": "Immune Boosting",
-          "description": "Supports immune function and overall health."
-        }
+        { "use": "Skin Hydration", "description": "Improves skin moisture and elasticity." },
+        { "use": "Immune Boosting", "description": "Supports immune function and overall health." }
       ]
     },
     {
       "herb": "Unibract Fritillary Bulb",
+      "toxicity_level": "Low",
+      "historical_use": "Used in traditional formulas for cough, phlegm, and lung issues.",
       "medical_uses": [
-        {
-          "use": "Cough Relief",
-          "description": "Used to treat dry cough and phlegm buildup."
-        },
-        {
-          "use": "Lung Health",
-          "description": "Helps with chronic bronchitis and asthma."
-        }
+        { "use": "Cough Relief", "description": "Used to treat dry cough and phlegm buildup." },
+        { "use": "Lung Health", "description": "Helps with chronic bronchitis and asthma." }
       ]
     }
   ]
