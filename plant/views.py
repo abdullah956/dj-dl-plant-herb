@@ -9,6 +9,7 @@ from django.conf import settings
 from django.contrib import messages
 from tensorflow.keras.models import load_model
 from .models import ContactMessage, NewsletterSubscriber
+from accounts.models import History
 
 model = load_model(os.path.join(settings.BASE_DIR, 'work', 'plant_work', 'plant.h5'))
 
@@ -42,7 +43,9 @@ def predict_view(request):
             result = qualities_data[extracted_name]
         else:
             result = {"message": "No matching data found"}
-
+        # Log the prediction action in History
+        action = f"Predicted {extracted_name} from image: {image_name}"
+        History.objects.create(user=request.user, action=action)
         return render(request, "plant/predict.html", {"predicted_class": extracted_name, "result": result})
 
     return render(request, "plant/predict.html")

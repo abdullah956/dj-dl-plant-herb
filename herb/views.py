@@ -6,6 +6,7 @@ from django.conf import settings
 from django.shortcuts import render
 from django.core.files.storage import default_storage
 from tensorflow.keras.models import load_model
+from accounts.models import History
 
 model = load_model(os.path.join(settings.BASE_DIR, 'work', 'herb_work', 'herb.h5'))
 
@@ -68,7 +69,8 @@ def predict_view(request):
             predicted_class = predict_image(default_storage.path(path))
 
         medical_info = get_medical_uses(predicted_class)
-
+        action = f"Predicted {predicted_class} from image: {file_name}"
+        History.objects.create(user=request.user, action=action)
         return render(request, "herb/predict.html", {"predicted_class": predicted_class, "medical_info": medical_info})
 
     return render(request, "herb/predict.html")
