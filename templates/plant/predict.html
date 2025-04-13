@@ -74,12 +74,27 @@
             <li>
               <a href="{% url 'home' %}" class="active">Home</a>
             </li>
+            {% if user.is_authenticated %}
             <li>
               <a href="{% url 'predict' %}">Predict Leaf</a>
             </li>
             <li>
               <a href="{% url 'herb_predict' %}">Predict Herb</a>
             </li>
+            <li>
+              <a href="{% url 'history' %}">History</a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li>
+              <a href="{% url 'login' %}">Login</a>
+            </li>
+            <li>
+              <a href="{% url 'signup' %}">Signup</a>
+            </li>
+            {% endif %}
 
             <li>
               <a href="{% url 'contact' %}">Contact</a>
@@ -131,41 +146,42 @@
         </div>
       </div>
 
-      <!-- {% if predicted_class %}
-        <div id="predictionToast" class="toast position-fixed top-50 start-50 translate-middle bg-dark text-white show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false" style="z-index: 1050;">
-          <div class="toast-header bg-success text-white">
-            <strong class="me-auto">✅ Prediction</strong>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
-          </div>
-          <div class="toast-body bg-white text-dark fw-bold">
-            <p>Predicted Class: {{ predicted_class }}</p>
-            {% if result %}
-              {% for key, value in result.items %}
-                <p>
-                  <strong>{{ key }}:</strong> {{ value }}
-                </p>
-              {% endfor %}
-            {% endif %}
-          </div>
-        </div>
-
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          var toastElement = document.getElementById('predictionToast')
-          var toast = new bootstrap.Toast(toastElement)
-          toast.show()
-        })
-      </script>
-      {% endif %} -->
       {% if predicted_class %}
       <div
+        id="prePredictionToast"
+        class="toast position-fixed top-50 start-50 translate-middle show"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        style="z-index: 1060; min-width: 50vw; max-width: 80vw"
+      >
+        <div class="toast-header bg-success text-white">
+          <strong class="me-auto">🔍 Preparing Prediction</strong>
+        </div>
+        <div class="toast-body bg-white text-dark fw-bold">
+          <p id="progressMessage">Starting prediction...</p>
+          <div class="progress mt-3" style="height: 20px">
+            <div
+              id="progressBar"
+              class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+              role="progressbar"
+              style="width: 5%"
+              aria-valuenow="5"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <div
         id="predictionToast"
-        class="toast position-fixed top-50 start-50 translate-middle bg-dark text-white show"
+        class="toast position-fixed top-50 start-50 translate-middle bg-dark text-white"
         role="alert"
         aria-live="assertive"
         aria-atomic="true"
         data-bs-autohide="false"
-        style="z-index: 1050;min-width: 50vw;max-width: 80vw;"
+        style="z-index: 1050; min-width: 50vw; max-width: 80vw"
       >
         <div class="toast-header bg-success text-white">
           <strong class="me-auto">✅ Prediction</strong>
@@ -184,8 +200,7 @@
           {% if result %}
           <p>
             📜 <strong>Historical Use:</strong>
-            {% if result.Historical_Use %} 
-             {{ result.Historical_Use }} 
+            {% if result.Historical_Use %} {{ result.Historical_Use }} 
             {% else %}
             <em>No historical use available.</em>
             {% endif %}
@@ -215,11 +230,43 @@
 
       <script>
         document.addEventListener("DOMContentLoaded", function () {
-          var toastElement = document.getElementById("predictionToast");
-          var toast = new bootstrap.Toast(toastElement);
-          toast.show();
+          const messages = [
+            { percent: 5, message: "📦 Initializing..." },
+            { percent: 40, message: "🔍 Analyzing Image..." },
+            { percent: 80, message: "🧠 Getting Insights..." },
+            { percent: 100, message: "✅ Done!" },
+          ];
+      
+          const bar = document.getElementById("progressBar");
+          const msg = document.getElementById("progressMessage");
+      
+          let index = 0;
+      
+          const updateProgress = () => {
+            if (index < messages.length) {
+              const step = messages[index];
+              bar.style.width = step.percent + "%";
+              bar.setAttribute("aria-valuenow", step.percent);
+              msg.textContent = step.message;
+              index++;
+            }
+          };
+      
+          const interval = setInterval(updateProgress, 3000);
+      
+          setTimeout(() => {
+            clearInterval(interval);
+      
+            const preToast = document.getElementById("prePredictionToast");
+            if (preToast) preToast.remove();
+      
+            const predictionToast = document.getElementById("predictionToast");
+            const toast = new bootstrap.Toast(predictionToast);
+            toast.show();
+          }, 12000);
         });
       </script>
+      
       {% endif %}
 
       <!-- Call To Action Section -->
