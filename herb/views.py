@@ -35,19 +35,52 @@ def predict_image(image_path):
 #         if herb["herb"].lower() == herb_name.lower():
 #             return herb
 #     return {"herb": herb_name, "medical_uses": []}
+
+# def get_medical_uses(herb_name):
+#     for herb in MEDIC_HERBS["herbs"]:
+#         if herb["herb"].lower().strip() == herb_name.lower().strip():
+#             return {
+#                 "toxicity_level": herb.get("toxicity_level", "Unknown"),
+#                 "historical_use": herb.get("historical_use", "No historical use available."),
+#                 "medical_uses": herb.get("medical_uses", [])
+#             }
+#     return {
+#         "toxicity_level": "Unknown",
+#         "historical_use": "No historical use available.",
+#         "medical_uses": []
+#     }
+
 def get_medical_uses(herb_name):
     for herb in MEDIC_HERBS["herbs"]:
         if herb["herb"].lower().strip() == herb_name.lower().strip():
+            toxicity = herb.get("toxicity_level", "Unknown")
+            historical = herb.get("historical_use", "No historical use available.")
+            medical_uses_raw = herb.get("medical_uses", [])
+
+           
+
+            medical_uses = []
+            for use in medical_uses_raw:
+                if isinstance(use, dict):
+                    use_str = f"{use.get('use', 'Unnamed Use')}: {use.get('description', '')}"
+                    medical_uses.append(use_str)
+                elif isinstance(use, str):
+                    medical_uses.append(use)
+
+            
+
             return {
-                "toxicity_level": herb.get("toxicity_level", "Unknown"),
-                "historical_use": herb.get("historical_use", "No historical use available."),
-                "medical_uses": herb.get("medical_uses", [])
+                "toxicity_level": toxicity,
+                "historical_use": historical,
+                "medical_uses": herb.get("medical_uses", []) 
             }
+
     return {
         "toxicity_level": "Unknown",
         "historical_use": "No historical use available.",
         "medical_uses": []
     }
+
 
 
 

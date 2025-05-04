@@ -3,44 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>History</title>
-    <!-- ✅ Bootstrap 5.3 CSS CDN -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- ✅ Font Awesome (optional for icons like clock) -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <title>User History</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #5e9750, #1b4b2e);
+      color: #fff;
+    }
+    .history-card {
+      background-color: #ffffff;
+      color: #000;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .search-bar input {
+      border-radius: 1rem;
+    }
+    .btn-delete {
+      transition: 0.3s;
+    }
+    .btn-delete:hover {
+      transform: scale(1.1);
+    }
+  </style>
 </head>
-<body class="bg-success">
+<body>
 
-  <div class="container mt-2">
-    <a href="{% url 'home' %}" class="btn btn-outline-light">Home</a>
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <a href="{% url 'home' %}" class="btn btn-outline-light"><i class="fa fa-home"></i> Home</a>
+    <form class="d-flex search-bar" method="get">
+      <input class="form-control me-2" type="search" name="search" placeholder="Search history..." value="{{ search_query }}">
+      <button class="btn btn-light" type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    {% if history_records %}
+      <a href="{% url 'delete_history' %}" class="btn btn-outline-light" onclick="return confirm('Are you sure you want to delete all history?')">
+        <i class="fa fa-trash"></i> Delete All
+      </a>
+    {% endif %}
   </div>
 
-<div class="container mt-5 mb-5">
-  <h2 class="mb-4 text-center text-light">🕘 User History</h2>
+  <h2 class="text-center text-light mb-4"><i class="fa fa-clock"></i> User History</h2>
 
   {% if history_records %}
     <ul class="list-group shadow-sm">
       {% for record in history_records %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
+        <li class="list-group-item history-card d-flex justify-content-between align-items-center mb-2">
           <div>
-            <i class="fa fa-clock me-2 text-primary"></i>
-            {{ record.action }}
+            <i class="fa fa-clock me-2 text-success"></i> {{ record.action }}
+            <br><small class="text-muted">{{ record.timestamp }}</small>
           </div>
-          <span class="badge bg-secondary rounded-pill">{{ record.timestamp }}</span>
+          <a href="{% url 'delete_single_history' record.id %}" class="btn btn-sm btn-success btn-delete"
+             onclick="return confirm('Delete this record?')">
+            <i class="fa fa-trash"></i>
+          </a>
         </li>
       {% endfor %}
     </ul>
   {% else %}
-    <div class="alert alert-info text-center mt-3">
-      No history records found.
+    <div class="alert alert-info text-center mt-4">
+      <i class="fa fa-info-circle"></i> No history records found.
     </div>
   {% endif %}
 </div>
 
-<!-- ✅ Bootstrap 5.3 JS (if needed for toasts, modals, etc.) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-  
+{% if messages %}
+  <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+    {% for message in messages %}
+      <div class="toast show bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+          {{ message }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

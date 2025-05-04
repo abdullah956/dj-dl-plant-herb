@@ -36,12 +36,37 @@ def logout_view(request):
     logout(request)
     return redirect('login')  # Redirect to login page after logging out
 
+# @login_required
+# def history(request):
+#     search_query = request.GET.get('search', '')  # Get the search query from the URL parameter
+#     history_records = History.objects.filter(user=request.user)
+
+#     if search_query:
+#         history_records = history_records.filter(action__icontains=search_query)
+
+#     return render(request, 'accounts/history.html', {'history_records': history_records, 'search_query': search_query})
+
 @login_required
 def history(request):
-    search_query = request.GET.get('search', '')  # Get the search query from the URL parameter
+    search_query = request.GET.get('search', '')  # Search filter
     history_records = History.objects.filter(user=request.user)
 
     if search_query:
         history_records = history_records.filter(action__icontains=search_query)
 
-    return render(request, 'accounts/history.html', {'history_records': history_records, 'search_query': search_query})
+    return render(request, 'accounts/history.html', {
+        'history_records': history_records,
+        'search_query': search_query
+    })
+
+@login_required
+def delete_history(request):
+    History.objects.filter(user=request.user).delete()
+    messages.success(request, "All history records deleted successfully.")
+    return redirect('history')
+
+@login_required
+def delete_single_history(request, record_id):
+    History.objects.filter(id=record_id, user=request.user).delete()
+    messages.success(request, "History record deleted successfully.")
+    return redirect('history')

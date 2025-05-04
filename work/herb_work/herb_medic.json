@@ -145,6 +145,58 @@
         { "use": "Cough Relief", "description": "Used to treat dry cough and phlegm buildup." },
         { "use": "Lung Health", "description": "Helps with chronic bronchitis and asthma." }
       ]
+    },
+    {
+      "herb": "Phaseolus Calcaratus",
+      "toxicity_level": "None",
+      "historical_use": "Traditionally used in Asian medicine for reducing swelling, promoting urination, and managing blood sugar.",
+      "medical_uses": [
+        { "use": "Diuretic Effect", "description": "Helps increase urine flow and reduce edema." },
+        { "use": "Blood Sugar Control", "description": "Used to regulate blood glucose levels in diabetic patients." },
+        { "use": "Anti-inflammatory", "description": "Reduces swelling and pain." },
+        { "use": "Detoxification", "description": "Supports the body’s natural detox processes." }
+      ]
+    },
+    {
+      "herb": "Poris Cocos",
+      "toxicity_level": "None",
+      "historical_use": "Commonly used in Traditional Chinese Medicine to drain dampness and calm the mind.",
+      "medical_uses": [
+        { "use": "Diuretic Effect", "description": "Promotes urination and reduces damp conditions in the body." },
+        { "use": "Digestive Aid", "description": "Supports digestion and strengthens the spleen." },
+        { "use": "Calming Effect", "description": "Used to calm the spirit and alleviate anxiety." },
+        { "use": "Immune Support", "description": "Enhances immune system activity." }
+      ]
+    },
+    {
+      "herb": "Scaphium Scaphigerum",
+      "toxicity_level": "Low",
+      "historical_use": "Used in Southeast Asian herbal medicine to relieve sore throat and promote hydration.",
+      "medical_uses": [
+        { "use": "Throat Soothing", "description": "Provides relief from sore throat and dry cough." },
+        { "use": "Digestive Health", "description": "Eases constipation and promotes bowel regularity." },
+        { "use": "Cooling Effect", "description": "Used to cool the body during fevers and heatstroke." }
+      ]
+    },
+    {
+      "herb": "Semen Dolichos",
+      "toxicity_level": "None",
+      "historical_use": "Used to treat diarrhea and poor appetite in traditional Chinese and Ayurvedic systems.",
+      "medical_uses": [
+        { "use": "Digestive Support", "description": "Helps relieve diarrhea and improve digestion." },
+        { "use": "Appetite Stimulation", "description": "Used to increase appetite and support nutrient absorption." },
+        { "use": "Anti-inflammatory", "description": "Reduces intestinal inflammation." }
+      ]
+    },
+    {
+      "herb": "Siraitia Grosvenorii",
+      "toxicity_level": "None",
+      "historical_use": "Revered in Chinese medicine for its ability to treat respiratory ailments and as a natural sweetener.",
+      "medical_uses": [
+        { "use": "Cough Relief", "description": "Used to ease sore throat, cough, and hoarseness." },
+        { "use": "Blood Sugar Management", "description": "Natural sweetener beneficial for diabetics." },
+        { "use": "Antioxidant Properties", "description": "Rich in mogrosides that fight oxidative stress." }
+      ]
     }
   ]
 }

@@ -197,34 +197,28 @@
             <span class="text-success">{{ predicted_class }}</span>
           </p>
 
-          {% if result %}
-          <p>
-            📜 <strong>Historical Use:</strong>
-            {% if result.Historical_Use %} {{ result.Historical_Use }} 
-            {% else %}
-            <em>No historical use available.</em>
-            {% endif %}
-          </p>
-
-          <p>
-            ⚠️ <strong>Toxicity Level:</strong>
-            {% if result.Toxicity_Level %}
-            <span
-              class="text-{{ result.Toxicity_Level|lower|yesno:'success,warning,danger' }}"
-              >{{ result.Toxicity_Level }}</span
-            >
-            {% else %}
-            <span class="text-muted">Unknown</span>
-            {% endif %}
-          </p>
-
-          <p>
-            🌿 <strong>Qualities:</strong>
-            {% if result.Qualities %} {{ result.Qualities }} {% else %}
-            <em>No qualities data available.</em>
-            {% endif %}
-          </p>
+          {% if result_type == "qualities" %}
+          <h5>🌿 Plant Qualities:</h5>
+          <p class="list-group-item">{{ result.qualities }}</p>
+        
+          {% if result.historical_use %}
+            <h5 class="mt-3">📜 Historical Use:</h5>
+            <p class="list-group-item">{{ result.historical_use }}</p>
           {% endif %}
+        
+          {% if result.toxicity_level %}
+            <h5 class="mt-3">☠️ Toxicity Level:</h5>
+            <p class="list-group-item">{{ result.toxicity_level }}</p>
+          {% endif %}
+        
+        {% elif result_type == "cause" %}
+          <h5>📋 Cause:</h5>
+          <p class="list-group-item">{{ result.cause }}</p>
+        
+        {% else %}
+          <p class="text-muted">No data found for this plant.</p>
+        {% endif %}
+        
         </div>
       </div>
 

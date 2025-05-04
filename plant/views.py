@@ -28,27 +28,83 @@ with open(qualities_file_path, 'r') as file:
 def extract_name(image_name):
     return " ".join(image_name.split()[:-1])
 
+# def predict_view(request):
+#     if request.method == "POST" and request.FILES.get("image"):
+#         image = request.FILES["image"]
+#         image_name = os.path.splitext(image.name)[0]
+#         extracted_name = extract_name(image_name)
+
+#         plant_data = CAUSE_NAMES
+#         qualities_data = QUALITY_NAMES
+
+#         if extracted_name in plant_data:
+#             result = plant_data[extracted_name]
+#         elif extracted_name in qualities_data:
+#             result = qualities_data[extracted_name]
+#         else:
+#             result = {"message": "No matching data found"}
+#         # Log the prediction action in History
+#         action = f"Predicted {extracted_name} from image: {image_name}"
+#         History.objects.create(user=request.user, action=action)
+#         return render(request, "plant/predict.html", {"predicted_class": extracted_name, "result": result})
+
+#     return render(request, "plant/predict.html")
+
+
+# Load model (if needed for prediction)
+# model = load_model(os.path.join(settings.BASE_DIR, 'work', 'plant_work', 'plant.h5'))
+
+# Load class and data files
+with open(os.path.join(settings.BASE_DIR, 'work', 'plant_work', 'plant_class.json')) as f:
+    CLASS_NAMES = json.load(f)
+
+with open(os.path.join(settings.BASE_DIR, 'work', 'plant_work', 'plant_cause.json')) as f:
+    CAUSE_NAMES = json.load(f)
+
+with open(os.path.join(settings.BASE_DIR, 'work', 'plant_work', 'plant_qualities.json')) as f:
+    QUALITY_NAMES = json.load(f)
+
+def extract_name(image_name):
+    return " ".join(image_name.split()[:-1])
+
 def predict_view(request):
     if request.method == "POST" and request.FILES.get("image"):
         image = request.FILES["image"]
         image_name = os.path.splitext(image.name)[0]
         extracted_name = extract_name(image_name)
 
-        plant_data = CAUSE_NAMES
-        qualities_data = QUALITY_NAMES
+        result_type = "none"
+        result = {}
 
-        if extracted_name in plant_data:
-            result = plant_data[extracted_name]
-        elif extracted_name in qualities_data:
-            result = qualities_data[extracted_name]
-        else:
-            result = {"message": "No matching data found"}
-        # Log the prediction action in History
+        qualities = QUALITY_NAMES.get(extracted_name)
+        cause = CAUSE_NAMES.get(extracted_name)
+
+        if qualities:
+            # Normalize keys for consistent access in template
+            result = {
+                "qualities": qualities.get("Qualities", ""),
+                "toxicity_level": qualities.get("Toxicity_Level", ""),
+                "historical_use": qualities.get("Historical_Use", "")
+            }
+            result_type = "qualities"
+        elif cause:
+            result = {
+                "cause": cause.get("Cause", "")
+            }
+            result_type = "cause"
+
+        # Log user prediction history
         action = f"Predicted {extracted_name} from image: {image_name}"
         History.objects.create(user=request.user, action=action)
-        return render(request, "plant/predict.html", {"predicted_class": extracted_name, "result": result})
+
+        return render(request, "plant/predict.html", {
+            "predicted_class": extracted_name,
+            "result": result,
+            "result_type": result_type
+        })
 
     return render(request, "plant/predict.html")
+
 
 def home_view(request):
     return render(request, "home.html")
